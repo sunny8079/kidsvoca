@@ -10,12 +10,44 @@ export default function WordCard({ word }) {
     }
     
     if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel(); // 현재 재생 중인 모든 음성 중지
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.85; // 어린이를 위해 약간 느리고 또박또박한 템포
-      utterance.pitch = 1.1; // 친근하고 높은 피치
-      window.speechSynthesis.speak(utterance);
+      try {
+        window.speechSynthesis.cancel(); // 현재 재생 중인 모든 음성 중지
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.85; // 어린이를 위해 약간 느리고 또박또박한 템포
+        utterance.pitch = 1.1; // 친근하고 높은 피치
+        
+        // 브라우저에 등록된 영어 발음 목소리를 명시적으로 탐색 및 매칭
+        const voices = window.speechSynthesis.getVoices();
+        const englishVoice = voices.find(v => 
+          v.lang === 'en-US' || 
+          v.lang.startsWith('en-') || 
+          v.lang.startsWith('en')
+        );
+        
+        if (englishVoice) {
+          utterance.voice = englishVoice;
+        }
+
+        utterance.onstart = () => {
+          console.log(`🔊 발음 재생 시작: "${text}"`);
+        };
+
+        utterance.onerror = (event) => {
+          console.error("❌ TTS 재생 오류 발생:", event.error);
+          // 특정 보이스 오류로 실패할 경우 브라우저 기본 보이스로 다시 시도
+          if (event.error === 'voice-unavailable') {
+            const fallbackUtterance = new SpeechSynthesisUtterance(text);
+            fallbackUtterance.lang = 'en-US';
+            window.speechSynthesis.speak(fallbackUtterance);
+          }
+        };
+
+        window.speechSynthesis.speak(utterance);
+      } catch (err) {
+        console.error("TTS 실행 중 예외가 발생했습니다:", err);
+      }
     } else {
       console.warn("이 브라우저는 음성 합성(TTS) 기능을 지원하지 않습니다.");
     }
