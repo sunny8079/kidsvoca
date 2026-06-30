@@ -11,23 +11,28 @@ export default function WordCard({ word }) {
     
     if ('speechSynthesis' in window) {
       try {
-        window.speechSynthesis.cancel(); // 현재 재생 중인 모든 음성 중지
+        // 모바일 브라우저(특히 iOS)에서 재생 중이 아닐 때 cancel()을 호출하면 
+        // 오디오 세션이 풀려 소리가 안 나는 이슈가 있으므로, 재생 중일 때만 끊고 새로 재생합니다.
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.cancel();
+        }
         
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'en-US';
         utterance.rate = 0.85; // 어린이를 위해 약간 느리고 또박또박한 템포
-        utterance.pitch = 1.1; // 친근하고 높은 피치
+        utterance.pitch = 1.0; // 자연스러운 피치
         
-        // 브라우저에 등록된 영어 발음 목소리를 명시적으로 탐색 및 매칭
+        // 브라우저에 등록된 영어 발음 목소리를 안전하게 검색 (대소문자 구분 없음)
         const voices = window.speechSynthesis.getVoices();
-        const englishVoice = voices.find(v => 
-          v.lang === 'en-US' || 
-          v.lang.startsWith('en-') || 
-          v.lang.startsWith('en')
-        );
-        
-        if (englishVoice) {
-          utterance.voice = englishVoice;
+        if (voices && voices.length > 0) {
+          const englishVoice = voices.find(v => {
+            const langLower = v.lang.toLowerCase();
+            return langLower === 'en-us' || langLower.startsWith('en-') || langLower.startsWith('en');
+          });
+          
+          if (englishVoice) {
+            utterance.voice = englishVoice;
+          }
         }
 
         utterance.onstart = () => {
@@ -36,12 +41,6 @@ export default function WordCard({ word }) {
 
         utterance.onerror = (event) => {
           console.error("❌ TTS 재생 오류 발생:", event.error);
-          // 특정 보이스 오류로 실패할 경우 브라우저 기본 보이스로 다시 시도
-          if (event.error === 'voice-unavailable') {
-            const fallbackUtterance = new SpeechSynthesisUtterance(text);
-            fallbackUtterance.lang = 'en-US';
-            window.speechSynthesis.speak(fallbackUtterance);
-          }
         };
 
         window.speechSynthesis.speak(utterance);
