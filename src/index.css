@@ -1,0 +1,556 @@
+/* ==========================================
+   Kids Voca Design System & Core Stylesheet
+   ========================================== */
+
+:root {
+  /* Playful pastel-inspired color palette */
+  --bg-gradient: radial-gradient(circle at 50% 50%, #fefcfb 0%, #f3f7fd 100%);
+  --text-main: #2b3a55;
+  --text-muted: #5e6f88;
+  
+  --primary: #6c5ce7;
+  --primary-hover: #5b4bc4;
+  --secondary: #ff7675;
+  --accent: #fdcb6e;
+  --success: #00b894;
+  --card-shadow: 0 12px 30px rgba(108, 92, 231, 0.08);
+  --card-shadow-hover: 0 20px 40px rgba(108, 92, 231, 0.16);
+
+  /* Level Specific Colors */
+  --color-elementary: #ff8a80;       /* Soft Peach/Red */
+  --color-elementary-bg: #fff1f0;
+  --color-middle: #4fc3f7;           /* Soft Blue/Teal */
+  --color-middle-bg: #e1f5fe;
+  --color-high: #ba68c8;             /* Soft Lavender/Purple */
+  --color-high-bg: #f3e5f5;
+
+  /* Typography */
+  --font-family-playful: 'Fredoka', system-ui, -apple-system, sans-serif;
+  --font-family-base: 'Outfit', system-ui, -apple-system, sans-serif;
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-card: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f4fa;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd6e9;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b1c1dc;
+}
+
+/* Layout Containers */
+.app-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Section */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px dashed #e2eaf4;
+}
+
+.header-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.header-logo {
+  font-size: 2.5rem;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.header-title-group h1 {
+  font-family: var(--font-family-playful);
+  font-weight: 700;
+  font-size: 2.2rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  font-family: var(--font-family-playful);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.btn-back {
+  background-color: #ffffff;
+  color: var(--text-main);
+  border: 2px solid #e2eaf4;
+}
+
+.btn-back:hover {
+  background-color: #f1f5fa;
+  transform: translateX(-4px);
+}
+
+.btn-home {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-home:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+}
+
+/* Main Display Descriptions */
+.view-description {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.view-description h2 {
+  font-family: var(--font-family-playful);
+  font-size: 2.5rem;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+}
+
+.view-description p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 1. Level Selector Page */
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.level-card {
+  background: white;
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid transparent;
+}
+
+.level-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+}
+
+.level-card.elementary::after { background-color: var(--color-elementary); }
+.level-card.middle::after { background-color: var(--color-middle); }
+.level-card.high::after { background-color: var(--color-high); }
+
+.level-badge {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.level-card.elementary .level-badge { background-color: var(--color-elementary-bg); }
+.level-card.middle .level-badge { background-color: var(--color-middle-bg); }
+.level-card.high .level-badge { background-color: var(--color-high-bg); }
+
+.level-card h3 {
+  font-family: var(--font-family-playful);
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.level-card p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  flex-grow: 1;
+}
+
+.level-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.level-card.elementary:hover { border-color: var(--color-elementary); }
+.level-card.middle:hover { border-color: var(--color-middle); }
+.level-card.high:hover { border-color: var(--color-high); }
+
+.level-card:hover .level-badge {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* 2. Topic Selector Page */
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.topic-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  cursor: pointer;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-smooth);
+  border: 2px solid #f0f4fa;
+}
+
+.topic-icon {
+  font-size: 2.5rem;
+  width: 65px;
+  height: 65px;
+  background: #f8fafc;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.topic-card:hover .topic-icon {
+  background: var(--color-middle-bg);
+  transform: scale(1.1);
+}
+
+.topic-info h3 {
+  font-family: var(--font-family-playful);
+  font-size: 1.35rem;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.topic-info span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.topic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--primary);
+}
+
+/* 3. Word Grid View */
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* 3D Flip Card Container */
+.card-scene {
+  perspective: 1000px;
+  height: 320px;
+}
+
+.card-3d {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: var(--transition-card);
+  cursor: pointer;
+  border-radius: 24px;
+}
+
+.card-scene:hover .card-3d {
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Class to trigger card flipping */
+.card-3d.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Card Faces */
+.card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 4px solid white;
+  transition: border-color 0.3s;
+}
+
+/* Card Front: Image + Hint */
+.card-front {
+  padding: 1.5rem;
+  z-index: 2;
+}
+
+.card-front:hover {
+  border-color: var(--primary);
+}
+
+.card-image-wrapper {
+  width: 100%;
+  height: 180px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background-color: #f7fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card-scene:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-hint {
+  font-family: var(--font-family-playful);
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  background: #f1f5fa;
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Card Back: English Word + Korean Definition */
+.card-back {
+  transform: rotateY(180deg);
+  padding: 2rem 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f6f8fe 100%);
+  justify-content: space-between;
+}
+
+.card-back:hover {
+  border-color: var(--secondary);
+}
+
+.back-header {
+  align-self: flex-end;
+}
+
+.speak-icon-btn {
+  background: var(--color-middle-bg);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #0288d1;
+  transition: var(--transition-smooth);
+}
+
+.speak-icon-btn:hover {
+  background: #0288d1;
+  color: white;
+  transform: scale(1.1);
+}
+
+.back-content {
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.word-english {
+  font-family: var(--font-family-playful);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+
+.word-korean {
+  font-family: var(--font-family-base);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.back-footer {
+  font-family: var(--font-family-base);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background-color: #edf2f7;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* Empty database notification */
+.db-warning-banner {
+  background: #fff9db;
+  border: 1.5px solid #ffe066;
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  color: #856404;
+  animation: slideInDown 0.5s ease-out;
+}
+
+.db-warning-banner button {
+  margin-left: auto;
+  background: none;
+  border: 1.5px solid #856404;
+  color: #856404;
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.db-warning-banner button:hover {
+  background: #856404;
+  color: white;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  .nav-buttons {
+    justify-content: space-between;
+  }
+  .view-description h2 {
+    font-size: 2rem;
+  }
+  .word-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .card-scene {
+    height: 280px;
+  }
+  .card-image-wrapper {
+    height: 140px;
+  }
+  .word-english {
+    font-size: 1.8rem;
+  }
+}
