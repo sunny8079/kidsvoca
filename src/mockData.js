@@ -57,7 +57,7 @@ export const mockWords = [
     topic_id: 101,
     english: "apple",
     korean: "사과",
-    image_url: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: 2,
@@ -85,7 +85,7 @@ export const mockWords = [
     topic_id: 101,
     english: "strawberry",
     korean: "딸기",
-    image_url: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: 6,
@@ -189,7 +189,7 @@ export const mockWords = [
     topic_id: 202,
     english: "breeze",
     korean: "산들바람",
-    image_url: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: 20,
@@ -786,7 +786,7 @@ export const mockWords = [
     topic_id: 207,
     english: "seed",
     korean: "씨앗",
-    image_url: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&w=300&q=80"
   },
 
   // 고등 - 인문과 철학 (topic_id: 304)
@@ -802,21 +802,21 @@ export const mockWords = [
     topic_id: 304,
     english: "morality",
     korean: "도덕성",
-    image_url: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: 105,
     topic_id: 304,
     english: "existence",
     korean: "존재",
-    image_url: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: 106,
     topic_id: 304,
     english: "perspective",
     korean: "관점",
-    image_url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: 107,
@@ -838,7 +838,7 @@ export const mockWords = [
     topic_id: 305,
     english: "inflation",
     korean: "인플레이션",
-    image_url: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: 110,
@@ -852,7 +852,7 @@ export const mockWords = [
     topic_id: 305,
     english: "consumers",
     korean: "소비자",
-    image_url: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: 112,
@@ -881,7 +881,7 @@ export const mockWords = [
     topic_id: 306,
     english: "masterpiece",
     korean: "명작/걸작",
-    image_url: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: 116,
@@ -938,7 +938,7 @@ export const mockWords = [
     topic_id: 307,
     english: "immunity",
     korean: "면역",
-    image_url: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=300&q=80"
+    image_url: "https://images.unsplash.com/photo-1618961734760-466979cb35b0?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: 124,
