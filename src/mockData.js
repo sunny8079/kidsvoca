@@ -25,14 +25,17 @@ export const mockTopics = [
   // 초등 주제
   { id: 101, level_id: 1, name: "과일 (Fruits)", code: "fruits", icon: "🍎" },
   { id: 102, level_id: 1, name: "동물 (Animals)", code: "animals", icon: "🦁" },
+  { id: 103, level_id: 1, name: "색깔과 도형 (Colors)", code: "colors_shapes", icon: "🎨" },
   
   // 중등 주제
   { id: 201, level_id: 2, name: "교통 (Transportation)", code: "transportation", icon: "✈️" },
   { id: 202, level_id: 2, name: "날씨와 계절 (Weather)", code: "weather", icon: "⛈️" },
+  { id: 203, level_id: 2, name: "스포츠와 취미 (Sports)", code: "sports_hobbies", icon: "⚽" },
   
   // 고등 주제
   { id: 301, level_id: 3, name: "감정 (Emotions)", code: "emotions", icon: "🎭" },
-  { id: 302, level_id: 3, name: "사회와 환경 (Society)", code: "society", icon: "🌍" }
+  { id: 302, level_id: 3, name: "사회와 환경 (Society)", code: "society", icon: "🌍" },
+  { id: 303, level_id: 3, name: "과학과 기술 (Science)", code: "science_tech", icon: "💻" }
 ];
 
 export const mockWords = [
@@ -298,5 +301,134 @@ export const mockWords = [
     english: "preservation",
     korean: "보존/보호",
     image_url: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=300&q=80"
+  },
+  // 초등 - 색깔과 도형 (topic_id: 103)
+  {
+    id: 37,
+    topic_id: 103,
+    english: "red",
+    korean: "빨간색",
+    image_url: "https://images.unsplash.com/photo-1580136579312-94651dfd596d?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 38,
+    topic_id: 103,
+    english: "blue",
+    korean: "파란색",
+    image_url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 39,
+    topic_id: 103,
+    english: "green",
+    korean: "초록색",
+    image_url: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 40,
+    topic_id: 103,
+    english: "yellow",
+    korean: "노란색",
+    image_url: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 41,
+    topic_id: 103,
+    english: "circle",
+    korean: "원/동그라미",
+    image_url: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 42,
+    topic_id: 103,
+    english: "square",
+    korean: "정사각형",
+    image_url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80"
+  },
+  // 중등 - 스포츠와 취미 (topic_id: 203)
+  {
+    id: 43,
+    topic_id: 203,
+    english: "soccer",
+    korean: "축구",
+    image_url: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 44,
+    topic_id: 203,
+    english: "swimming",
+    korean: "수영",
+    image_url: "https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 45,
+    topic_id: 203,
+    english: "hiking",
+    korean: "하이킹/등산",
+    image_url: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 46,
+    topic_id: 203,
+    english: "photography",
+    korean: "사진 촬영",
+    image_url: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 47,
+    topic_id: 203,
+    english: "instrument",
+    korean: "악기",
+    image_url: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 48,
+    topic_id: 203,
+    english: "painting",
+    korean: "그림 그리기",
+    image_url: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=300&q=80"
+  },
+  // 고등 - 과학과 기술 (topic_id: 303)
+  {
+    id: 49,
+    topic_id: 303,
+    english: "artificial intelligence",
+    korean: "인공지능",
+    image_url: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 50,
+    topic_id: 303,
+    english: "virtual reality",
+    korean: "가상 현실",
+    image_url: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 51,
+    topic_id: 303,
+    english: "genetics",
+    korean: "유전학",
+    image_url: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 52,
+    topic_id: 303,
+    english: "renewable energy",
+    korean: "재생 가능 에너지",
+    image_url: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 53,
+    topic_id: 303,
+    english: "cybersecurity",
+    korean: "사이버 보안",
+    image_url: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    id: 54,
+    topic_id: 303,
+    english: "exploration",
+    korean: "탐사/탐험",
+    image_url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=80"
   }
 ];
