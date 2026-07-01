@@ -134,25 +134,63 @@ export default function App() {
     loadWords();
   }, [selectedTopic, isUsingMockData]);
 
+  // 브라우저 뒤로가기/앞으로가기 (History API) 지원
+  useEffect(() => {
+    // 최초 진입 시 현재 상태를 history에 기록
+    window.history.replaceState({ view: 'levels', level: null, topic: null }, '', '');
+
+    const handlePopState = (event) => {
+      if (event.state) {
+        const { view, level, topic } = event.state;
+        setCurrentView(view);
+        setSelectedLevel(level);
+        setSelectedTopic(topic);
+      } else {
+        setCurrentView('levels');
+        setSelectedLevel(null);
+        setSelectedTopic(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   // 탐색 제어 핸들러
-  const handleNavigate = (view) => {
+  const handleNavigate = (view, isPopState = false) => {
     setCurrentView(view);
+    let nextLevel = selectedLevel;
+    let nextTopic = selectedTopic;
+
     if (view === 'levels') {
+      nextLevel = null;
+      nextTopic = null;
       setSelectedLevel(null);
       setSelectedTopic(null);
     } else if (view === 'topics') {
+      nextTopic = null;
       setSelectedTopic(null);
+    }
+
+    if (!isPopState) {
+      window.history.pushState({ view, level: nextLevel, topic: nextTopic }, '', '');
     }
   };
 
-  const handleSelectLevel = (level) => {
+  const handleSelectLevel = (level, isPopState = false) => {
     setSelectedLevel(level);
     setCurrentView('topics');
+    if (!isPopState) {
+      window.history.pushState({ view: 'topics', level, topic: null }, '', '');
+    }
   };
 
-  const handleSelectTopic = (topic) => {
+  const handleSelectTopic = (topic, isPopState = false) => {
     setSelectedTopic(topic);
     setCurrentView('words');
+    if (!isPopState) {
+      window.history.pushState({ view: 'words', level: selectedLevel, topic }, '', '');
+    }
   };
 
   return (
