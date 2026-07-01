@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+// Chrome 등 일부 브라우저에서 SpeechSynthesisUtterance 객체가 가비지 컬렉션(GC)되어 
+// 소리가 중간에 끊기거나 아예 재생되지 않는 버그를 방지하기 위해 전역/모듈 스코프에 참조를 유지합니다.
+let activeUtterance = null;
+
 export default function WordCard({ word }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -11,11 +15,8 @@ export default function WordCard({ word }) {
     
     if ('speechSynthesis' in window) {
       try {
-        // 모바일 브라우저(특히 iOS)에서 재생 중이 아닐 때 cancel()을 호출하면 
-        // 오디오 세션이 풀려 소리가 안 나는 이슈가 있으므로, 재생 중일 때만 끊고 새로 재생합니다.
-        if (window.speechSynthesis.speaking) {
-          window.speechSynthesis.cancel();
-        }
+        // 기존 재생 중인 음성이 있으면 중단
+        window.speechSynthesis.cancel();
         
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'en-US';
@@ -43,7 +44,22 @@ export default function WordCard({ word }) {
           console.error("❌ TTS 재생 오류 발생:", event.error);
         };
 
-        window.speechSynthesis.speak(utterance);
+        utterance.onend = () => {
+          // 재생 완료 시 참조 해제
+          if (activeUtterance === utterance) {
+            activeUtterance = null;
+          }
+        };
+
+        // 가비지 컬렉션 버그 방지를 위해 모듈 레벨 변수에 할당
+        activeUtterance = utterance;
+
+        // cancel() 직후 바로 speak()를 호출할 때 브라우저 엔진이 먹통이 되는 버그(Race Condition)를 방지하기 위해
+        // 50ms의 아주 짧은 지연(setTimeout) 후 speak를 실행합니다.
+        setTimeout(() => {
+          window.speechSynthesis.speak(utterance);
+        }, 50);
+        
       } catch (err) {
         console.error("TTS 실행 중 예외가 발생했습니다:", err);
       }
